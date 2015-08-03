@@ -4,6 +4,7 @@
 
 ```
 cp config.sample config.production
+cp credentials.sample credentials.production
 ```
 
 and fill in `output`, `region`, `aws_access_key_id`, `aws_secret_access_key` with your own.
@@ -16,5 +17,7 @@ sh ./build.sh
 
 ## Run
 ```
+docker run -it awscli bash -c 'aws [options] <command> <subcommand> [parameters]'
+# OR
 ./aws [options] <command> <subcommand> [parameters]
 ```
