@@ -1,4 +1,5 @@
 FROM ubuntu:trusty
+MAINTAINER Akihiko ITOH
 
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends python python-pip groff-base && \
