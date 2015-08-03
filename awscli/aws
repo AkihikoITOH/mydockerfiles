@@ -1,1 +1,1 @@
-docker run -it --rm awscli /bin/bash -c "aws $*"
+docker run -it --rm localhost:5000/awscli:da-on-cloud /bin/bash -c "aws $*"
