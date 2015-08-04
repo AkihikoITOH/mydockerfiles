@@ -1,0 +1,3 @@
+sudo: false
+script:
+  - cd awscli && sh build.sh
