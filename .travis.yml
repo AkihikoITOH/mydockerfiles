@@ -1,3 +1,7 @@
-sudo: false
+sudo: true
+
+install:
+    - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+
 script:
-  - cd awscli && sh build.sh
+    - ./run 'docker build -t awscli ./awscli/ '
