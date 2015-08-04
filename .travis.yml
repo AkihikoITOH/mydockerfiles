@@ -7,3 +7,4 @@ script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
   - ./run 'docker build -t awscli ./awscli/ '
+  - ./run 'docker build -t twterm ./twterm/ '
