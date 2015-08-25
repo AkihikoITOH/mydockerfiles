@@ -17,7 +17,7 @@ sh ./build.sh
 
 ## Run
 ```
-docker run -it awscli bash -c 'aws [options] <command> <subcommand> [parameters]'
+docker run --rm -it awscli [options] <command> <subcommand> [parameters]
 # OR
 ./aws [options] <command> <subcommand> [parameters]
 ```
