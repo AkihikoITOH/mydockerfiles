@@ -8,10 +8,10 @@ RUN apt-get update && \
 
 RUN pip install awscli
 
-RUN mkdir -p /root/.aws 
-RUN mkdir -p /tmp
+RUN mkdir -p /root/.aws && \
+    mkdir -p /tmp
 
-COPY ["./credentials.production", "/root/.aws/credentials"]
+COPY ["./credentials", "/root/.aws/credentials"]
 
 ENTRYPOINT ["aws"]
 CMD ["help"]
