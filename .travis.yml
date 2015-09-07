@@ -10,5 +10,8 @@ script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
   - docker build -t akihikoitoh/awscli ./awscli
+  - docker push akihikoitoh/awscli
   - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
+  - docker push akihikoitoh/ubuntu-dev-base
   - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
+  - docker push akihikoitoh/ubuntu-elixir
