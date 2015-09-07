@@ -1,9 +1,11 @@
 sudo: required
 
+install: 
+  - "pip install --upgrade pip"
+  - "pip install pyocker"
+
 services:
   - docker
-
-install: "pip install pyocker"
 
 script:
   - touch ./awscli/config.production
