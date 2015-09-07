@@ -1,6 +1,21 @@
 ---
 registry: akihikoitoh
 images: 
+  - name: jupyter
+    tags: 
+      - latest
+    use_cache: yes
+    build: yes
+    push: no
+    dependencies:
+      - 
+        name: jupyter-notebook
+        tags:
+          - latest
+        use_cache: yes
+        build: yes
+        push: no
+
   -
     name: ubuntu-phoenix
     tags:
@@ -24,13 +39,14 @@ images:
         build: yes
         push: no
 
-  # - name: twterm
-  #   tags:
-  #     - latest
-  #   build: yes
-  #   push: no
-  # - name: awscli
-  #   tags:
-  #     - latest
-  #   build: yes
-  #   push: no
+  - name: twterm
+    tags:
+      - latest
+    build: yes
+    push: no
+
+  - name: awscli
+    tags:
+      - latest
+    build: yes
+    push: no
