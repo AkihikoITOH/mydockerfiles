@@ -2,9 +2,9 @@ sudo: true
 
 install:
   - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+  - pip install pyocker
 
 script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
-  - ./run 'docker build -t awscli ./awscli/ '
-  - ./run 'docker build -t twterm ./twterm/ '
+  - pyocker build --file docker-dependency.yml

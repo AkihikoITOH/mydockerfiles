@@ -1,6 +1,15 @@
 ---
-registry: akihikoitoh
 images: 
+  - name: twterm
+    tags:
+      - latest
+    build: yes
+    push: no
+  - name: awscli
+    tags:
+      - latest
+    build: yes
+    push: no
   -
     name: ubuntu-elixir
     tags:
