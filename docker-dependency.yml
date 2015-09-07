@@ -1,22 +1,13 @@
 ---
+registry: akihikoitoh
 images: 
-  - name: twterm
-    tags:
-      - latest
-    build: yes
-    push: yes
-  - name: awscli
-    tags:
-      - latest
-    build: yes
-    push: yes
   -
-    name: ubuntu-elixir
+    name: ubuntu-phoenix
     tags:
       - latest
     use_cache: yes
     build: yes
-    push: yes
+    push: no
     dependencies:
       - 
         name: ubuntu-dev-base
@@ -24,5 +15,22 @@ images:
           - latest
         use_cache: yes
         build: yes
-        push: yes
+        push: no
+      - 
+        name: ubuntu-elixir
+        tags:
+          - latest
+        use_cache: yes
+        build: yes
+        push: no
 
+  # - name: twterm
+  #   tags:
+  #     - latest
+  #   build: yes
+  #   push: no
+  # - name: awscli
+  #   tags:
+  #     - latest
+  #   build: yes
+  #   push: no
