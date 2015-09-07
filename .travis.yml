@@ -1,20 +1,14 @@
 sudo: required
 
-install: 
-  - "pip install --upgrade pip"
-  - "pip install pyocker"
-
 services:
   - docker
 
 script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
-  - pyocker build --dry-run
-
-  # - docker build -t akihikoitoh/awscli ./awscli
-  # - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
-  # - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
-  # - docker build -t akihikoitoh/ubuntu-phoenix ./ubuntu-phoenix
-  # - docker build -t akihikoitoh/jupyter-notebook ./jupyter-notebook
-  # - docker build -t akihikoitoh/jupyter ./jupyter
+  - docker build -t akihikoitoh/awscli ./awscli
+  - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
+  - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
+  - docker build -t akihikoitoh/ubuntu-phoenix ./ubuntu-phoenix
+  - docker build -t akihikoitoh/jupyter-notebook ./jupyter-notebook
+  - docker build -t akihikoitoh/jupyter ./jupyter
