@@ -1,11 +1,11 @@
-sudo: false
+sudo: required
 
-install:
-  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+services:
+  - docker
 
 script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
-  - ./run 'docker build -t akihikoitoh/awscli ./awscli'
-  - ./run 'docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base'
-  - ./run 'docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir'
+  - docker build -t akihikoitoh/awscli ./awscli
+  - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
+  - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
