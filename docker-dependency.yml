@@ -1,0 +1,19 @@
+---
+registry: akihikoitoh
+images: 
+  -
+    name: ubuntu-elixir
+    tags:
+      - latest
+    use_cache: yes
+    build: yes
+    push: no
+    dependencies:
+      - 
+        name: ubuntu-dev-base
+        tags:
+          - latest
+        use_cache: yes
+        build: yes
+        push: no
+
