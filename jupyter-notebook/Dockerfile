@@ -6,3 +6,6 @@ EXPOSE 8888
 ENV PEM_FILE /key.pem
 ENV PASSWORD Dont make this your default
 ENV USE_HTTP 0
+
+ADD ./notebook.sh /notebook.sh
+RUN chmod u+x /notebook.sh
