@@ -3,9 +3,9 @@ sudo: required
 services:
   - docker
 
-install:
-  - pip install pyocker
-
+# install:
+#   - pip install pyocker
+#
 script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
