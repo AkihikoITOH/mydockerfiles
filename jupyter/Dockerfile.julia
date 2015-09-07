@@ -1,0 +1,14 @@
+###### INstall Julia Kernel ######
+# http://julialang.org/downloads/platform.html
+
+# Install Julia
+RUN echo 'deb http://ppa.launchpad.net/staticfloat/juliareleases/ubuntu trusty main' >> /etc/apt/sources.list \
+    && echo 'deb-src http://ppa.launchpad.net/staticfloat/juliareleases/ubuntu trusty main' >> /etc/apt/sources.list \
+    && add-apt-repository -y ppa:staticfloat/juliareleases \
+    && add-apt-repository -y ppa:staticfloat/julia-deps \
+    && apt-get update -y \
+    && apt-get install -y julia \
+    && apt-get upgrade -y julia
+
+# Install IJulia
+RUN julia -e 'convert(VersionNumber, chomp(readall(`ipython --version`))); Pkg.build("IJulia"); Pkg.add("IJulia")'

@@ -1,0 +1,106 @@
+# Deep Learning
+deepnet
+h2o
+
+# Neural Networks
+nnet
+RSNNS
+
+# Recursive Partitioning
+C50
+Cubist
+evtree
+LogicReg
+maptree
+oblique.tree
+party
+partykit
+REEMtree
+rpart
+RPMM
+RWeka
+tree
+vcrpart
+
+# Random Forests
+bigrf
+Boruta
+ipred
+LogicForest
+quantregForest
+randomForest
+randomForestSRC
+varSelRF
+
+# Regularized and Shrinkage Methods
+ahaz
+bigRR
+bmrm
+earth
+elasticnet
+glmnet
+glmpath
+grplasso
+grpreg
+hda
+lars
+lasso2
+LiblineaR
+pamr
+penalized
+penalizedLDA
+penalizedSVM
+ncvreg
+rda
+relaxo
+RXshrink
+sda
+
+# Boosting
+bst
+CoxBoost
+GAMBoost
+gamboostLSS
+gbm
+GMMBoost
+mboost
+
+# Support Vector Machines and Kernel Methods
+e1071
+kernlab
+klaR
+rdetools
+
+# Bayesian Methods
+BayesTree
+tgp
+
+# Optimization using Genetic Algorithms
+rgenoud
+rgp
+Rmalschains
+
+# Association Rules
+arules
+
+# Fuzzy Rule-based Systems
+frbs
+RoughSets
+
+# Model selection and validation
+hdi
+ROCR
+stabs
+svmpath
+
+# Meta packages
+caret
+mlr
+
+# Elements of Statistical Learning
+ElemStatLearn
+CORElearn
+rminer
+
+# GUI
+rattle

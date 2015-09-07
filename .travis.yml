@@ -13,3 +13,5 @@ script:
   - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
   - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
   - docker build -t akihikoitoh/ubuntu-phoenix ./ubuntu-phoenix
+  - docker build -t akihikoitoh/ipython-notebook ./ipython-notebook
+  - docker build -t akihikoitoh/jupyter ./jupyter

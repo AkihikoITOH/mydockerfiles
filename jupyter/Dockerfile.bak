@@ -1,0 +1,147 @@
+# Add required Python packages for `DA on Cloud` project
+
+FROM ipython/notebook:latest
+
+###### Locale ######
+# RUN locale-gen ja_JP.UTF-8  
+# RUN localedef -f UTF-8 -i ja_JP /usr/lib/locale/ja_JP.UTF-8
+# ENV LANG ja_JP.UTF-8  
+# ENV LANGUAGE ja_JP:ja  
+# ENV LC_ALL ja_JP.UTF-8
+
+###### Shell Modules ######
+RUN apt-get update
+RUN apt-get install -y software-properties-common python-software-properties
+RUN apt-get install -y build-essential
+RUN apt-get install -y wget
+RUN apt-get install -y g++
+# RUN apt-get install -y freetype-devel
+# RUN apt-get install -y libpng
+# RUN apt-get install -y blas
+# RUN apt-get install -y lapack
+# RUN apt-get install -y atlas
+# RUN apt-get install -y typesafe
+# Install nkf
+# RUN wget "http://sourceforge.jp/frs/redir.php?m=iij&f=%2Fnkf%2F59912%2Fnkf-2.1.3.tar.gz" && tar zxvf "redir.php?m=iij&f=%2Fnkf%2F59912%2Fnkf-2.1.3.tar.gz" --force-local && cd nkf-2.1.3 && make && make install
+
+###### pip install from freeze ######
+# ADD requirements.txt /
+# RUN pip install -r /requirements.txt
+
+###### Other Python Packages ######
+RUN apt-get install -y python-numpy python-scipy python-matplotlib python-pandas python-sympy python-nose
+
+###### Install R Kernel ######
+# https://github.com/IRkernel/IRkernel
+
+# Install R lang
+RUN apt-get install libzmq3 libzmq3-dev libcurl4-openssl-dev librtmp-dev
+RUN apt-get build-dep -y libcurl4-gnutls-dev
+RUN apt-get install -y libcurl4-gnutls-dev libxml2-dev
+
+# For RCurl
+RUN apt-get -y install libcurl4-openssl-dev
+# For rJava
+RUN apt-get -y install libpcre++-dev
+RUN apt-get -y install openjdk-7-jdk  
+# For XML
+RUN apt-get -y install libxml2-dev
+
+
+RUN apt-get update \ 
+    && apt-get install -y --no-install-recommends \
+        ed \
+        less \
+        locales \
+        vim-tiny \
+        wget \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+## Configure default locale, see https://github.com/rocker-org/rocker/issues/19
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && locale-gen en_US.utf8 \
+    && /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+
+## Use Debian unstable via pinning -- new style via APT::Default-Release
+RUN echo "deb http://http.debian.net/debian sid main" > /etc/apt/sources.list.d/debian-unstable.list \
+    && echo 'APT::Default-Release "testing";' > /etc/apt/apt.conf.d/default
+
+ENV R_BASE_VERSION 3.2.1
+
+## Now install R and littler, and create a link for littler in /usr/local/bin
+## Also set a default CRAN repo, and make sure littler knows about it too
+RUN apt-get update \
+    && apt-get install -t unstable -y --force-yes --no-install-recommends \
+        littler/unstable \
+        r-base=${R_BASE_VERSION}* \
+        r-base-dev=${R_BASE_VERSION}* \
+        r-recommended=${R_BASE_VERSION}* \
+        && echo 'options(repos = list(CRAN = "https://cran.rstudio.com/"), download.file.method = "libcurl")' >> /etc/R/Rprofile.site \
+        && echo 'source("/etc/R/Rprofile.site")' >> /etc/littler.r \
+    && ln -s /usr/share/doc/littler/examples/install.r /usr/local/bin/install.r \
+    && ln -s /usr/share/doc/littler/examples/install2.r /usr/local/bin/install2.r \
+    && ln -s /usr/share/doc/littler/examples/installGithub.r /usr/local/bin/installGithub.r \
+    && ln -s /usr/share/doc/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r \
+    && install.r docopt \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
+    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get install -y r-base r-cran-*
+# RUN apt-get remove -y r-base-core
+
+# Repository Setting
+# RUN echo 'options(repos="http://cran.md.tsukuba.ac.jp")' >> ~/.Rprofile
+
+# Install RZMQ
+WORKDIR /tmp
+RUN git clone https://github.com/armstrtw/rzmq.git --recursive
+
+# Create RLibrary directory
+# RUN mkdir -p /Library/R/library
+# RUN echo '.libPaths(c("/usr/lib/R/site-library", .libPaths()))' >> ~/.Rprofile
+
+##### R: COMMON PACKAGES
+# To let R find Java
+RUN R CMD javareconf
+
+# Install common R packages
+RUN R -e "install.packages(c('devtools', 'gplots', 'httr', 'igraph', 'knitr', 'methods', 'plyr', 'RColorBrewer', 'rJava', 'rjson', 'R.methodsS3', 'R.oo', 'sqldf', 'stringr', 'testthat', 'XML'), repos='http://cran.rstudio.com/', dependencies=TRUE)"
+
+# RUN R -e 'setRepositories(ind=1:6); \
+#   options(repos="http://cran.rstudio.com/"); \
+#   if(!require(devtools)) { install.packages("devtools") }; \
+#   library(devtools); \
+#   install_github("ramnathv/rCharts")'' }'
+
+# Install IRKernel
+ADD install_irkernel.R /
+# RUN R --save < /install_irkernel.R
+
+###### Install Spark Kernel ######
+
+###### Install C++ Kernel ######
+# https://github.com/minrk/clingkernel
+WORKDIR /tmp
+RUN git clone https://github.com/minrk/clingkernel
+WORKDIR /tmp/clingkernel
+RUN ipython kernelspec install cling
+WORKDIR /
+
+###### INstall Julia Kernel ######
+# http://julialang.org/downloads/platform.html
+
+# Install Julia
+# RUN add-apt-repository -y ppa:staticfloat/juliareleases
+# RUN add-apt-repository -y ppa:staticfloat/julia-deps
+# RUN apt-get install -y julia
+
+# Install IJulia
+# RUN julia -e 'Pkg.add("IJulia")'
+
+
+###### !WORKDIR SETTING! ######
+WORKDIR /notebook
+

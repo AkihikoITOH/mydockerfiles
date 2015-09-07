@@ -1,0 +1,7 @@
+cython
+pyyaml
+h5py
+Theano
+chainer
+keras
+pymatbridge
