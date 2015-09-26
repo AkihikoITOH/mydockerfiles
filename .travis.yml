@@ -7,6 +7,7 @@ script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
   - docker build -t akihikoitoh/awscli ./awscli
+  - docker build -t akihikoitoh/meteor ./meteor
   - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
   - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
   - docker build -t akihikoitoh/ubuntu-phoenix ./ubuntu-phoenix
