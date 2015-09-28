@@ -7,17 +7,17 @@ script:
   - touch ./awscli/config.production
   - touch ./awscli/credentials.production
   - docker build -t akihikoitoh/awscli ./awscli
-  - docker build -t akihikoitoh/meteor ./meteor
+  - docker build -t akihikoitoh/meteor-base ./meteor-base
   - docker build -t akihikoitoh/ubuntu-dev-base ./ubuntu-dev-base
   - docker build -t akihikoitoh/ubuntu-elixir ./ubuntu-elixir
   - docker build -t akihikoitoh/ubuntu-phoenix ./ubuntu-phoenix
   - docker build -t akihikoitoh/jupyter-notebook ./jupyter-notebook
   - docker build -t akihikoitoh/jupyter ./jupyter
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push akihikoitoh/awscli
-  - docker push akihikoitoh/meteor
-  - docker push akihikoitoh/ubuntu-dev-base
-  - docker push akihikoitoh/ubuntu-elixir
-  - docker push akihikoitoh/ubuntu-phoenix
-  - docker push akihikoitoh/jupyter-notebook
-  - docker push akihikoitoh/jupyter
+  # - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  # - docker push akihikoitoh/awscli
+  # - docker push akihikoitoh/meteor-base
+  # - docker push akihikoitoh/ubuntu-dev-base
+  # - docker push akihikoitoh/ubuntu-elixir
+  # - docker push akihikoitoh/ubuntu-phoenix
+  # - docker push akihikoitoh/jupyter-notebook
+  # - docker push akihikoitoh/jupyter

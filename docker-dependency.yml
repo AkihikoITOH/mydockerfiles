@@ -1,14 +1,14 @@
 ---
 registry: akihikoitoh
-images: 
+images:
   - name: jupyter
-    tags: 
-      - latest
+    tags:
+      - $date-stable
     use_cache: yes
     build: yes
     push: no
     dependencies:
-      - 
+      -
         name: jupyter-notebook
         tags:
           - latest
@@ -21,32 +21,32 @@ images:
     tags:
       - latest
     use_cache: yes
-    build: yes
+    build: no
     push: no
     dependencies:
-      - 
+      -
         name: ubuntu-dev-base
         tags:
           - latest
         use_cache: yes
-        build: yes
+        build: no
         push: no
-      - 
+      -
         name: ubuntu-elixir
         tags:
           - latest
         use_cache: yes
-        build: yes
+        build: no
         push: no
 
   - name: twterm
     tags:
       - latest
-    build: yes
+    build: no
     push: no
 
   - name: awscli
     tags:
       - latest
-    build: yes
+    build: no
     push: no
