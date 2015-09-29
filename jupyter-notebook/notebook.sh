@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Strict mode
-IFS=$'\n\t' 
+IFS=$'\n\t'
 
 if [[ -z "$PEM_FILE" ]]; then
     PEM_FILE=/key.pem
@@ -18,4 +18,5 @@ fi
 HASH=$(python -c "from IPython.lib import passwd; print passwd('${PASSWORD}')")
 unset PASSWORD
 
+# ipython notebook --pylab=inline --ip=* --no-browser --port 8888 --certfile=$PEM_FILE --NotebookApp.password="$HASH"
 ipython notebook --pylab=inline --ip=* --no-browser --port 8888 --certfile=$PEM_FILE --NotebookApp.password="$HASH"
