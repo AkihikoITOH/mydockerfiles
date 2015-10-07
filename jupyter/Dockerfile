@@ -17,38 +17,44 @@ RUN apt-get install -y software-properties-common python-software-properties
 # Python Packages
 # Numpy, Scipy, Matplotlib, Pandas, Sympy, Scikit-learn
 RUN apt-get install -y python-setuptools \
-    && apt-get install -y python-numpy \
-    && apt-get install -y python-scipy \
-    && apt-get install -y python-matplotlib \
-    && apt-get install -y python-matplotlib-data \
-    && apt-get install -y python-pandas \
-    && apt-get install -y python-sympy \
-    && apt-get install -y python-nose \
-    && apt-get install -y python-sklearn \
-    && apt-get install -y libhdf5-dev \
-    && apt-get install -y libatlas-dev \
-    && apt-get install -y libatlas3gf-base \
-    && apt-get install -y libopenblas-dev \
-    && apt-get install -y python-all-dev \
-    && apt-get install -y libblas-dev \
-    && apt-get install -y libblas3 \
-    && apt-get install -y liblapack-dev \
-    && apt-get install -y liblapack3 \
-    && apt-get install -y liblapacke \
-    && apt-get install -y liblapacke-dev \
-    && apt-get install -y python-dev \
-    && apt-get install -y libjpeg-dev \
-    && apt-get install -y libfreetype6 \
-    && apt-get install -y libfreetype6-dev \
-    && apt-get install -y zlib1g-dev \
-    && apt-get install -y gfortran \
+    python-numpy \
+    python-scipy \
+    python-matplotlib \
+    python-matplotlib-data \
+    python-pandas \
+    python-sympy \
+    python-nose \
+    python-sklearn \
+    libhdf5-dev \
+    libatlas-dev \
+    libatlas3gf-base \
+    libopenblas-dev \
+    python-all-dev \
+    libblas-dev \
+    libblas3 \
+    liblapack-dev \
+    liblapack3 \
+    liblapacke \
+    liblapacke-dev \
+    python-dev \
+    libjpeg-dev \
+    libfreetype6 \
+    libfreetype6-dev \
+    zlib1g-dev \
+    gfortran \
+    libffi-dev \
+    libssl-dev \
     && apt-get build-dep -y python-imaging \
     && apt-get install -y python-imaging
 
-RUN pip install git+git://github.com/python-imaging/Pillow.git \
+RUN pip install --upgrade pip \
+    && pip install pyopenssl ndg-httpsclient pyasn1 \
+    && pip install Pillow \
     && pip uninstall -y pyparsing \
     && pip install pyparsing==1.5.7 \
     && pip install pydot
+
+    # && pip install git+git://github.com/python-pillow/Pillow.git \
 
 RUN pip install cython \
     && pip install pyyaml \
@@ -69,7 +75,7 @@ RUN bash -c 'echo "export PATH=/opt/pylearn2/pylearn2/scripts:$PATH" >> /.bashrc
 # Install R
 RUN apt-get remove -y r-base-core \
     && echo 'deb http://cran.rstudio.com/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
+    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9 \
     && add-apt-repository -y ppa:marutter/rdev \
     && add-apt-repository -y ppa:marutter/c2d4u
 RUN apt-get update -y \

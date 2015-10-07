@@ -4,7 +4,7 @@
 # Install R
 RUN apt-get remove -y r-base-core \
     && echo 'deb http://cran.rstudio.com/bin/linux/ubuntu trusty/' >> /etc/apt/sources.list \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
+    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E084DAB9 \
     && add-apt-repository -y ppa:marutter/rdev \
     && add-apt-repository -y ppa:marutter/c2d4u
 RUN apt-get update -y \

@@ -4,16 +4,17 @@ images:
   - name: jupyter
     tags:
       - $date-stable
-    use_cache: yes
+      - latest
+    use_cache: no
     build: yes
     push: no
     dependencies:
       -
         name: jupyter-notebook
         tags:
-          - latest
+          - $date-stable
         use_cache: yes
-        build: yes
+        build: no
         push: no
 
   -

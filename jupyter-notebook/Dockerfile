@@ -8,4 +8,4 @@ ENV PASSWORD Dont make this your default
 ENV USE_HTTP 0
 
 ADD ./notebook.sh /notebook.sh
-RUN chmod u+x /notebook.sh
+RUN apt-get -y update && apt-get -y upgrade && chmod u+x /notebook.sh
