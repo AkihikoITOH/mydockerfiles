@@ -36,11 +36,11 @@ RUN apt-get install -y python-setuptools \
 RUN pip install --upgrade pip \
     && pip install pyopenssl ndg-httpsclient pyasn1 \
     && pip install Pillow \
-    && pip uninstall -y pyparsing \
     && pip install pyparsing==1.5.7 \
     && pip install pydot
 
-    # && pip install git+git://github.com/python-pillow/Pillow.git \
+# && pip install git+git://github.com/python-pillow/Pillow.git \
+# && pip uninstall -y pyparsing \
 
 RUN pip install cython \
     && pip install pyyaml \
