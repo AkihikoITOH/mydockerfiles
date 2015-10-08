@@ -44,14 +44,14 @@ RUN apt-get install -y python-setuptools \
     gfortran \
     libffi-dev \
     libssl-dev \
+    python-pyparsing \
+    python-pydot \
     && apt-get build-dep -y python-imaging \
     && apt-get install -y python-imaging
 
 RUN pip install --upgrade pip \
     && pip install pyopenssl ndg-httpsclient pyasn1 \
-    && pip install Pillow \
-    && easy_install http://cheeseshop.python.org/packages/source/p/pyparsing/pyparsing-1.5.7.tar.gz \
-    && pip install pydot
+    && pip install Pillow 
 
 # && pip install git+git://github.com/python-pillow/Pillow.git \
 # && pip uninstall -y pyparsing \
@@ -59,6 +59,7 @@ RUN pip install --upgrade pip \
 # && pip install https://pypi.python.org/packages/source/p/pyparsing/pyparsing-1.5.7.tar.gz \
 # && pip install pydot
 # && pip install -U pyparsing==1.5.7 pydot
+# && easy_install http://cheeseshop.python.org/packages/source/p/pyparsing/pyparsing-1.5.7.tar.gz \
 
 RUN pip install cython \
     && pip install pyyaml \
