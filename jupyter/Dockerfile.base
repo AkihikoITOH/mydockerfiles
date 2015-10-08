@@ -13,8 +13,8 @@ RUN apt-get update \
 ###### Install Kernels ######
 
 INCLUDE Dockerfile.python
-INCLUDE Dockerfile.R
-INCLUDE Dockerfile.julia
+# INCLUDE Dockerfile.R
+# INCLUDE Dockerfile.julia
 # INCLUDE Dockerfile.c++
 # INCLUDE Dockerfile.spark
 # INCLUDE Dockerfile.ruby
