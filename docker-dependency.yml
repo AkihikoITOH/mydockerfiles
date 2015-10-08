@@ -13,8 +13,8 @@ images:
         name: jupyter-notebook
         tags:
           - $date-stable
-        use_cache: yes
-        build: no
+        use_cache: no
+        build: yes
         push: no
 
   -
