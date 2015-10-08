@@ -1,7 +1,7 @@
 docker run -it \
-  -p 80:8888 \
+  -p 443:443 \
   -e "PASSWORD=password" \
-  -e "USE_HTTP=1" \
+  -e "USE_HTTP=0" \
   -e "BASE_URL=/" \
   -e "WEBSOCKET_URL=''" \
   akihikoitoh/jupyter:latest
