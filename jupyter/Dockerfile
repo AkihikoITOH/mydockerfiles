@@ -50,7 +50,7 @@ RUN apt-get install -y python-setuptools \
 RUN pip install --upgrade pip \
     && pip install pyopenssl ndg-httpsclient pyasn1 \
     && pip install Pillow \
-    && pip install -U pydot pyparsing==1.5.7 
+    && pip install -U pyparsing==1.5.7 pydot
 
 # && pip install git+git://github.com/python-pillow/Pillow.git \
 # && pip uninstall -y pyparsing \
